@@ -1,0 +1,18 @@
+{#  영화리스트 for문 돌리기 #}
+
+{% for movie,style in multilist %}
+    <article class="itembox">
+        <span class="image">
+            <img src="{{ movie.moviewimg }}" alt="영화이미지" class="image"/>
+        </span>
+{#    style="background-color: {{ style }}"#}
+        <a href="{% url 'moview:detail' movie.id %}" class="movie-box" >
+            <div class="text-box">
+                <div class="content">
+                    <h2>{{  }}</h2>
+                    <p>{{  }}</p>
+                </div>
+            </div>
+        </a>
+    </article>
+{% endfor %}

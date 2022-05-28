@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!--  배경 로고 화면  -->
+    <section class="header">
+        <div class="title">
+            <img src="https://blog.kakaocdn.net/dn/cPFLgb/btqCFxzQ6BF/BpdfkJG09auHKBWRHFQTY1/img.jpg" alt="">
+            <h1>11번가</h1>
+            <p>11번가 상품관리 ADMIN</p>
+
+            <div class="search">
+                <form action="{% url 'product:search' %}" class="searchForm">
+                    <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}"
+                           placeholder="search movies"/>
+                    <button type="submit" id="search-sub-btn"><img class="search-img"
+                                                                   src="https://cdn-icons-png.flaticon.com/512/16/16492.png"/>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {#  상품 목록  #}
+    <section class="products_list">
+        <div class="container">
+            <div class="title">
+                <h1>FILTERING LIST</h1>
+                <ul>
+                    <li><a href="">이름순</a></li>
+                    <li><a href="">인기순</a></li>
+                    <li><a href="">가격순</a></li>
+                    <li><a href="">최신순</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="item_list">
+
+            {#  상품 아이템  #}
+            <div class="item">
+                <div class="img">
+                    <img src="" alt="">
+                </div>
+                <div class="info">
+                    <h2>ProductName</h2>
+                    <p>상품 가격</p>
+                    <p>판매자 정보</p>
+                    <p>상품 평가 점수</p>
+                    <button>보러가기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{#    footer #}
+    <div class="footer">
+        <div class="about">
+            <p>11번가(주)</p>
+            <p>대표이사 : 하형일, 주소:
+                <p>서울특별시 중구 한강대로 416</p>
+                , Tel: 1599-0110
+            </p>
+            <p>사업자등록번호 : 815-81-01244, 통신판매업신고 : 2018-서울중구-1445<a
+                    href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=8158101244" class="link" target="_blank"
+                    rel="noreferrer" data-log-actionid-area="footer" data-log-actionid-label="btn"
+                    data-log-body="{&quot;btn_name&quot;:&quot;사업자정보확인&quot;}">사업자정보확인</a></p>
+            </div>
+    </div>
+{% endblock %}

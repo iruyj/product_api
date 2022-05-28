@@ -19,7 +19,7 @@ def getlist(request, keyword):
 
 def getProduct(request, productCode):
     key = "1f3540984e07f196b3f6fb67bc169e46"
-    url = f"http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key={key}&apiCode=ProductInfo&productCode={productCode}&option=PdOption"
+    url = f"http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key={key}&apiCode=ProductInfo&productCode={productCode}"
     req = requests.get(url)
     xmldata = req.content.decode('cp949')
     jsonData = json.dumps(xmltodict.parse(xmldata), indent=4)
