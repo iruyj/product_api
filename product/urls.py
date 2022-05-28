@@ -10,5 +10,6 @@ urlpatterns = [
     path('info/', views.getProduct, name="info"),
     path('view', views.search, name="list"),
     path('main', views.index, name="index"),
+    path('detail', views.detail, name="index"),
     path('search/', views.index, name="search"),
 ]

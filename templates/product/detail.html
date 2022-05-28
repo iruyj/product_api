@@ -1,17 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
     <!--  배경 로고 화면  -->
-    <section class="detail">
-        <img src="" alt="">
-        <div class="info">
-            <h2>상품이름</h2>
-            <p>상품코드</p>
-            <p>가격</p>
-            <p>tMall 최저가격</p>
-            <p>포인트</p>
-            <p>배송비</p>
-            <p>셀러의 만족도 정보</p>
-            <p>셀러의 판매 등급</p>
+    <div class="detail_container">
+        <section class="detail">
+            <img src="" alt="">
+            <div class="info">
+                <h2>상품이름</h2>
+                <p class="productCode">상품코드</p>
+
+                <p class="productPrice">가격</p>
+                <p class="tMall-price">tMall 최저가격</p>
+                <hr>
+                <p class="chip">적립포인트 : 포인트</p>
+                <p class="installment">무이자 할부 : 0</p>
+                <hr>
+                <p class="sellsatisfaction">셀러의 만족도 정보</p>
+                <p class="sellgrade">셀러의 판매 등급</p>
+                <select class="option_choose">
+                    <option value="name">name</option>
+                </select>
+                <br>
+                <button value="구매하기" style="background-color: blue">구매하기</button>
+                <button value="구매하기" style="background-color: #ff3300">장바구니</button>
+            </div>
+        </section>
+        <hr class="detail_hr">
+        <div class="detail_list">
+            <div class="infos">
+                <p class="delivery">상품 배송비 정보</p>
+            </div>
+            <hr>
+            <div class="qa">
+                <ul class="qna">
+                    <div class="post">
+                            <p class="title"></p>
+                            <p class="date"></p>
+                            <p class="writer"></p>
+                            <a href="">상세정보 ur</a>
+                        </div>
+                </ul>
+            </div>
+            <hr>
+            <div class="postScript">
+                <ul class="qna">
+                    <div class="post">
+                            <p class="title"></p>
+                            <p class="date"></p>
+                            <p class="writer"></p>
+                            <a href="">상세정보 ur</a>
+                            <p class="productRating">상품만족도 점수</p>
+                            <p class="serviceRating">서비스 만족도 점수</p>
+                            <p class="DeliveryRating">배송 만족도 점수</p>
+                            <p class="priceRating">가격 만족도 점수</p>
+                        </div>
+                </ul>
+            </div>
+            <hr>
+            <div class="review">
+                <ul class="qna">
+                    <li>
+                        <div class="post">
+                            <p class="title"></p>
+                            <p class="date"></p>
+                            <p class="writer"></p>
+                            <a href="">상세정보 ur</a>
+                        </div>
+                    </li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
         </div>
-    </section>
+    </div>
 {% endblock %}

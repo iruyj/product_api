@@ -128,7 +128,7 @@ body{
     margin-right: 20px;
 }
 
-hr{
+.list_hr{
     border: 0.2px solid #c9c9c9;
     width: 60%;
     margin-left: 30px;
@@ -170,17 +170,19 @@ hr{
 }
 .products_list .container .item_list .item .info button{
     background: #c90000;
-    color: white;
     border: 2px solid white;
     border-radius: 5px;
     padding: 5px 10px;
+}
+.products_list .container .item_list .item .info button .text{
+    color: white;
+    text-decoration: none;
     font-size: 10px;
     transition: .5s ease;
 }
 .products_list .container .item_list .item .info button:hover{
     cursor: pointer;
     background: #7f0707;
-
 }
 /* paging */
 .page_wrap {
@@ -243,4 +245,91 @@ hr{
 
 .footer p{
     color: #5a5a5a;
+}
+
+
+/* detail page */
+.detail_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+}
+.detail_container .detail{
+    display: flex;
+    margin-top: 5%;
+    margin-right: 20%;
+}
+.detail_container .detail img{
+    width: 300px;
+    height: 350px;
+    margin-right: 30px;
+}
+.detail_hr{
+    border: 0.2px solid #c9c9c9;
+    width: 60%;
+    margin-top: 5%;
+    align-self: center;
+    margin-right: 20%;
+}
+
+.infos p{
+    background-color: #5a5a5a;
+    text-align: left;
+}
+
+.detail_container .info h2{
+    margin-top: 7px;
+    margin-bottom: 0;
+    font-size: 18px;
+}
+.detail_container .info .productCode{
+    font-size: 12px;
+    margin-top: 0;
+    color: #5a5a5a;
+}
+.detail_container .info .productPrice{
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #c90000;
+}
+.detail_container .info .tMall-price{
+    color: #5a5a5a;
+    margin-top: 0;
+    font-size: 12px;
+}
+.detail_container .info .chip,.installment, .sellsatisfaction, .sellgrade{
+    color: #3e3e3e;
+    margin-top: 2px;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.detail_container .info .option_choose{
+    padding: 7px;
+    width: 250px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.detail_container .info button{
+    padding: 10px;
+    color: white;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.infos{
+    width: 60vw;
+}
+.delivery{
+    text-align: left;
+}
+
+.detail_container ul{
+    list-style: none;
 }

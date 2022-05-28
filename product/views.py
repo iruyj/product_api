@@ -36,3 +36,7 @@ def search(request):
 def index(request):
 
     return render(request,'product/list.html',context={'data':[0,0,0,0,0,0,0,0]})
+
+
+def detail(request):
+    return render(request, 'product/detail.html',context={})
