@@ -9,4 +9,6 @@ urlpatterns = [
     path('list/<str:keyword>', views.getlist, name="list"),
     path('info/', views.getProduct, name="info"),
     path('view', views.search, name="list"),
+    path('main', views.index, name="index"),
+    path('search/', views.index, name="search"),
 ]

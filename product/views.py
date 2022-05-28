@@ -31,3 +31,8 @@ def getProduct(request, productCode):
 def search(request):
     # return redirect('product:list',"수분크림")
     return redirect('product:info')
+
+
+def index(request):
+
+    return render(request,'product/list.html',context={'data':[0,0,0,0,0,0,0,0]})
