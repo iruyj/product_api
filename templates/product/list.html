@@ -4,10 +4,10 @@
     <!--  배경 로고 화면  -->
     <section class="header">
         <div class="title">
-            <img src="https://lh3.googleusercontent.com/n0rLzF0CidXu9n9CMzhtMoX10zxbM4rcdfIhOpOOEeC6VrsesQji4kI81t3Vcof0XIxc7VDAuozaOn8=w1082-h890"
-                 alt="">
+            <a href="#list"> <img src="https://lh3.googleusercontent.com/xqq7qpXWPtZ2TvY_SwUMByK6xm2SbZlYBUexy-qoR3x0UY-BUGTT5gdQ-i2_C-NQpkQ1GfHi2cZn6rw=w1898-h902"
+                                  alt="" title="로고 클릭시 리스트로 이동합니다."></a>
             <h1>11번가</h1>
-            <p>11번가 상품관리 ADMIN</p>
+            <p>11번가 상품관리 ADMIN 페이지</p>
 
             <div class="search">
                 <form action="{% url 'product:index' %}" class="searchForm">
@@ -24,6 +24,7 @@
     {#  상품 목록  #}
     <section class="products_list">
         <div class="container">
+        <a name="list"></a>
             <div class="title">
                 {#                <h1>FILTERING LIST</h1>#}
                 <ul>
@@ -44,7 +45,8 @@
                             <p class="price">\ {{ data.ProductPrice }}원</p>
                             <p class="salls">판매자: {{ data.Seller }}</p>
                             <div class="info_footer">
-                                <button class="btn_detail"><a href="{% url 'product:detail' data.ProductCode %}" class="text">보러가기</a></button>
+                                <button class="btn_detail"><a href="{% url 'product:detail' data.ProductCode %}"
+                                                              class="text">보러가기</a></button>
                                 <p class="score">★ {{ data.Rating }}</p>
                             </div>
                         </div>
@@ -52,23 +54,42 @@
                 {% endfor %}
             </div>
 
-            <div class="paging">
-                <div class="page_wrap">
-                    <div class="page_nation">
-                        <a class="arrow prev" href="#"><</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <a class="arrow next" href="#">></a>
-                    </div>
-                </div>
+            <div id="page_wrap">
+                <ul class="pagination" style="margin-top: 2rem;">
+                    <!-- 이전페이지 -->
+                    {% if datas.has_previous %}
+                        <li class="page-item prev">
+                            <a class="page-link" href="{% url 'product:index' %}?&page={{ datas.previous_page_number }}">◁</a>
+                            <!-- href로 뎁스 설정 -->
+                        </li>
+                    {% else %}
+                        <li class="page-item prev">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">◁</a>
+                        </li>
+                    {% endif %}
+                    <!-- 페이지리스트 -->
+                    {% for page_number in datas.paginator.page_range %}
+                        {% if page_number == datas.number %}
+                            <li class="page-current" aria-current="page">
+                                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    <!-- 다음페이지 -->
+                    {% if datas.has_next %}
+                        <li class="page-item next">
+                            <a class="page-link" href="?&page={{ datas.next_page_number }}">▷</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item next">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">▷</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </section>

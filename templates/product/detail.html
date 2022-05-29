@@ -28,58 +28,21 @@
                         <option value="name">[품절]</option>
                     {% else %}
                     {% for option in datas.OptionList %}
-                        <option value="name">{{ option.Order }}) {{ option.ValueName }} |  + {{ option.Price }}</option>
+                        <option value="name">{{ option.Order }}) {{ option.ValueName }} |  {{ option.Price }}</option>
                     {% endfor %}
                     {% endif %}
                 </select>
                 <br>
                 <button value="확인완료" style="background-color: blue" onclick="history.back()">확인완료</button>
-                <button value="부가정보" style="background-color: #ff3300">부가정보</button>
+                <a href="#image" class="imagelink"><button value="부가정보" style="background-color: #ff3300">추가사진</button></a>
             </div>
         </section>
         <hr class="detail_hr">
-        <div class="detail_list">
-            <div class="qa">
-                <ul class="qna">
-                    <div class="post">
-                            <p class="title"></p>
-                            <p class="date"></p>
-                            <p class="writer"></p>
-                            <a href="">상세정보 ur</a>
-                        </div>
-                </ul>
-            </div>
-            <hr>
-            <div class="postScript">
-                <ul class="qna">
-                    <div class="post">
-                            <p class="title"></p>
-                            <p class="date"></p>
-                            <p class="writer"></p>
-                            <a href="">상세정보 ur</a>
-                            <p class="productRating">상품만족도 점수</p>
-                            <p class="serviceRating">서비스 만족도 점수</p>
-                            <p class="DeliveryRating">배송 만족도 점수</p>
-                            <p class="priceRating">가격 만족도 점수</p>
-                        </div>
-                </ul>
-            </div>
-            <hr>
-            <div class="review">
-                <ul class="qna">
-                    <li>
-                        <div class="post">
-                            <p class="title"></p>
-                            <p class="date"></p>
-                            <p class="writer"></p>
-                            <a href="">상세정보 ur</a>
-                        </div>
-                    </li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-
-        </div>
+        <a name="image"></a>
+        <ul class="plus-image" style="list-style: none">
+            <li>추가사진1 <br><img src="{{ datas.AddImage1|default_if_none:'https://www.iksan.go.kr/images/tour2/no_image.png' }}" alt=""></li>
+            <li>추가사진2<br><img src="{{ datas.AddImage2|default_if_none:'https://www.iksan.go.kr/images/tour2/no_image.png' }}" alt=""></li>
+            <li>추가사진3<br><img src="{{ datas.AddImage3|default_if_none:'https://www.iksan.go.kr/images/tour2/no_image.png' }}" alt=""></li>
+        </ul>
     </div>
 {% endblock %}

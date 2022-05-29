@@ -18,6 +18,7 @@ body{
 
 .header .title img {
     width: 70px;
+    cursor: pointer;
 }
 
 .header .title h1 {
@@ -195,44 +196,45 @@ body{
 	text-align:center;
 	font-size:0;
  }
-.page_nation {
+.pagination {
 	display:inline-block;
 }
-.page_nation .none {
-	display:none;
+.pagination ul {
+    list-style: none;
 }
-.page_nation a {
+.pagination .page-current{
+    display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	text-align:center;
+    background-color: #ffb8b4;
+}
+.pagination .page-item {
 	display:block;
 	margin:0 3px;
 	float:left;
 	border:1px solid #e6e6e6;
 	width:28px;
 	height:28px;
-	line-height:28px;
 	text-align:center;
 	background-color:#fff;
-	font-size:13px;
-	color:#999999;
+}
+.pagination a{
+	/*line-height:28px;*/
+    font-size:13px;
+	color: #616161;
 	text-decoration:none;
 }
-.page_nation .arrow {
-	border:1px solid #ccc;
-}
-.page_nation .pprev {
-	background:#f8f8f8 no-repeat center center;
-	margin-left:0;
-}
-.page_nation .prev {
-	background:#f8f8f8  no-repeat center center;
+.pagination .prev {
+	background: #eeeeee no-repeat center center;
 	margin-right:7px;
 }
-.page_nation .next {
-	background:#f8f8f8  no-repeat center center;
+.pagination .next {
+	background: #f3f2f2 no-repeat center center;
 	margin-left:7px;
-}
-.page_nation .nnext {
-	background:#f8f8f8 no-repeat center center;
-	margin-right:0;
 }
 .page_nation a.active {
 	background-color:#42454c;
@@ -240,6 +242,7 @@ body{
 	border:1px solid #42454c;
 }
 
+/* footer 스타일 지정 */
 .footer{
     background-color: #dbdbdb;
     margin-top: 50px;
@@ -327,26 +330,14 @@ body{
     margin-top: 10px;
     cursor: pointer;
 }
-
-.detail_list{
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: flex-start;
-    visibility: hidden;
+.detail_container .info button .imagelink{
+    text-decoration: none;
+    color: white;
 }
-.infos{
-    width: 60vw;
+.detail_container .plus-image li img{
+    width: 40vw;
+    height : auto;
 }
-.delivery{
-    text-align: left;
-}
-
-.detail_container ul{
-    list-style: none;
-}
-
 /* 공통 스타일 */
 .check{
     text-decoration: underline;
