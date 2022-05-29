@@ -4,11 +4,13 @@ import xmltodict as xmltodict
 from django.shortcuts import render, redirect
 import requests
 import xmltodict # Create your views here.
+datalist = []
 def getlist(keyword):
+    global datalist
     key = "1f3540984e07f196b3f6fb67bc169e46"
     url = f"http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key={key}&apiCode=ProductSearch&keyword={keyword}"
     req = requests.get(url)
-    xmldata = req.content.decode('cp949')
+    xmldata = req .content.decode('cp949')
     data = json.loads(json.dumps(xmltodict.parse(xmldata), indent=4))
     used = []
     # data = json.loads(jsonData)
@@ -33,7 +35,29 @@ def getlist(keyword):
    # 'SellerNick', 'Seller', 'SellerGrd', 'Rating', 'DetailPageUrl', 'SalePrice', 'Delivery', 'ReviewCount',
    # 'BuySatisfy', 'MinorYn', 'Benefit']
    #  datas = data['ProductSearchResponse']['Products']['Product']
-    return used
+    datalist = used
+
+def filtering(request, type):   # 0:이름순, 1:인기순, 2:낮은가격순, 3:높은가격순
+    global datalist
+    # 체크표시를 해줄 클래스 지정
+    checklist = getChecklist(type)
+    return render(request,'product/list.html',context={'datas': datalist, 'chkclass':checklist })
+
+def getChecklist(type):
+    checklist = {'rating': '', 'name': '', 'pricedown': '', 'priceup': ''}
+    if type == 0:
+        checklist['rating'] = 'check'
+        datalist.sort(key=lambda x: int(x['Rating']), reverse=True)
+    elif type == 1:
+        checklist['name'] = 'check'
+        datalist.sort(key=lambda x: x['ProductName'])
+    elif type == 2:
+        checklist['pricedown'] = 'check'
+        datalist.sort(key=lambda x: int(x['ProductPrice'][:-4]+x['ProductPrice'][-3:]))
+    elif type == 3:
+        checklist['priceup'] = 'check'
+        datalist.sort(key=lambda x: int(x['ProductPrice'][:-4]+x['ProductPrice'][-3:]), reverse=True)
+    return checklist
 
 def getProduct(productCode):
     key = "1f3540984e07f196b3f6fb67bc169e46"
@@ -71,13 +95,14 @@ def search(request):
     return redirect('product:list',"수분크림")
     # return redirect('product:info')
 
-
 def index(request):
+    global datalist
     kw = request.GET.get('kw','')
 
-    datas = getlist(kw)
+    getlist(kw)
+    chklist = getChecklist(0)
     # ProductName , ProductImage300, ProductPrice, Seller, Rating(5점만점)
-    return render(request,'product/list.html',context={'datas': datas})
+    return render(request,'product/list.html',context={'datas': datalist, 'chkclass':chklist })
 
 
 def detail(request, code):

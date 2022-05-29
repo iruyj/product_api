@@ -111,7 +111,6 @@ body{
     text-decoration: underline;
     color: rgba(225, 0, 42, 0.84);
     font-weight: bold;
-
 }
 
 /* item list */
@@ -346,4 +345,11 @@ body{
 
 .detail_container ul{
     list-style: none;
+}
+
+/* 공통 스타일 */
+.check{
+    text-decoration: underline;
+    color: rgba(225, 0, 42, 0.84);
+    font-weight: bold;
 }

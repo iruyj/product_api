@@ -10,7 +10,7 @@
             <p>11번가 상품관리 ADMIN</p>
 
             <div class="search">
-                <form action="{% url 'product:search' %}" class="searchForm">
+                <form action="{% url 'product:index' %}" class="searchForm">
                     <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}"
                            placeholder="search product name"/>
                     <button type="submit" id="search-sub-btn">
@@ -27,10 +27,10 @@
             <div class="title">
                 {#                <h1>FILTERING LIST</h1>#}
                 <ul>
-                    <li><a href="">이름순</a></li>
-                    <li><a href="">인기순</a></li>
-                    <li><a href="">가격순</a></li>
-                    <li><a href="">최신순</a></li>
+                    <li class="{{ chkclass.rating }}"><a href="{% url 'product:filter' 0 %}">인기순</a></li>
+                    <li class="{{ chkclass.name }}"><a href="{% url 'product:filter' 1 %}">이름순</a></li>
+                    <li class="{{ chkclass.pricedown }}"><a href="{% url 'product:filter' 2 %}">낮은가격순</a></li>
+                    <li class="{{ chkclass.priceup }}"><a href="{% url 'product:filter' 3 %}">높은가격순</a></li>
                 </ul>
             </div>
             <hr class="list_hr">

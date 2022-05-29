@@ -6,10 +6,10 @@ from product import views
 app_name = 'product'
 
 urlpatterns = [
-    path('list/<str:keyword>', views.getlist, name="list"),
+    # path('list/<str:keyword>', views.getlist, name="list"),
+    path('', views.index, name="index"),
     path('info/', views.getProduct, name="info"),
     path('view/', views.search, name="list"),
-    path('main/', views.index, name="index"),
+    path('filter/<int:type>', views.filtering, name="filter"),
     path('<int:code>/', views.detail, name="detail"),
-    path('search/', views.index, name="search"),
 ]
