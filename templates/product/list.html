@@ -36,16 +36,16 @@
             <hr class="list_hr">
             <div class="item_list">
                 {#  상품 아이템  #}
-                {% for i in data %}
+                {% for data in datas %}
                     <div class="item">
-                        <img src="" alt="">
+                        <img src="{{ data.ProductImage }}" alt="">
                         <div class="info">
-                            <h2>ProductName</h2>
-                            <p class="price">상품 가격</p>
-                            <p class="salls">판매자 정보</p>
+                            <h2>{{ data.ProductName }}</h2>
+                            <p class="price">\ {{ data.ProductPrice }}원</p>
+                            <p class="salls">판매자: {{ data.Seller }}</p>
                             <div class="info_footer">
-                                <button class="btn_detail"><a href="" class="text">보러가기</a></button>
-                                <p class="score">상품 평가 점수</p>
+                                <button class="btn_detail"><a href="{% url 'product:detail' data.ProductCode %}" class="text">보러가기</a></button>
+                                <p class="score">★ {{ data.Rating }}</p>
                             </div>
                         </div>
                     </div>
