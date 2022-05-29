@@ -3,33 +3,42 @@
     <!--  배경 로고 화면  -->
     <div class="detail_container">
         <section class="detail">
-            <img src="" alt="">
+            <img src="{{ datas.BasicImage }}" alt="">
             <div class="info">
-                <h2>상품이름</h2>
-                <p class="productCode">상품코드</p>
+                {% if status == 'Y' %}
+                <h2>{{ datas.ProductName }}</h2>
+                {% else %}
+                <h2>[품절] {{ datas.ProductName }}</h2>
+                {% endif %}
+                <p class="productCode">code: {{ datas.ProductCode }}</p>
 
-                <p class="productPrice">가격</p>
-                <p class="tMall-price">tMall 최저가격</p>
+                <p class="productPrice">\ {{ datas.ProductPrice.Price }}</p>
+                <p class="tMall-price">tMall 최저: {{ datas.ProductPrice.LowestPrice }}</p>
                 <hr>
-                <p class="chip">적립포인트 : 포인트</p>
-                <p class="installment">무이자 할부 : 0</p>
+                <p class="delivery">* 배송비 : {{ datas.ShipFee }}</p>
                 <hr>
-                <p class="sellsatisfaction">셀러의 만족도 정보</p>
-                <p class="sellgrade">셀러의 판매 등급</p>
+                <p class="chip">+ point : {{ datas.Point }}포인트</p>
+                <p class="chip">+ chip : {{ datas.Chip }}chip</p>
+                <hr>
+                <p class="installment">무이자 할부 : {{ datas.Installment|default_if_none:'없음' }}</p>
+                <p class="sellsatisfaction">판매자만족도 : {{ datas.SellSatisfaction }}</p>
+                <p class="sellgrade">판매자등급: {{ datas.SellGrade }}</p>
                 <select class="option_choose">
-                    <option value="name">name</option>
+                    {% if not datas.OptionList %}
+                        <option value="name">[품절]</option>
+                    {% else %}
+                    {% for option in datas.OptionList %}
+                        <option value="name">{{ option.Order }}) {{ option.ValueName }} |  + {{ option.Price }}</option>
+                    {% endfor %}
+                    {% endif %}
                 </select>
                 <br>
-                <button value="구매하기" style="background-color: blue">구매하기</button>
-                <button value="구매하기" style="background-color: #ff3300">장바구니</button>
+                <button value="확인완료" style="background-color: blue" onclick="history.back()">확인완료</button>
+                <button value="부가정보" style="background-color: #ff3300">부가정보</button>
             </div>
         </section>
         <hr class="detail_hr">
         <div class="detail_list">
-            <div class="infos">
-                <p class="delivery">상품 배송비 정보</p>
-            </div>
-            <hr>
             <div class="qa">
                 <ul class="qna">
                     <div class="post">

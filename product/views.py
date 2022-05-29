@@ -19,7 +19,7 @@ def getlist(keyword):
         temp = {}
         temp['ProductName'] = product['ProductName']
         temp['ProductImage'] = product['ProductImage300']
-        temp['ProductPrice'] = product['ProductPrice']
+        temp['ProductPrice'] = product['ProductPrice'][:-3]+','+product['ProductPrice'][-3:]
         temp['ProductCode'] = product['ProductCode']
         temp['Seller'] = product['Seller']
         temp['Rating'] = product['Rating']
@@ -53,16 +53,19 @@ def getProduct(productCode):
     used['ShipFee'] = data['Product']['ShipFee']  # 배송비 정보
     used['SellSatisfaction'] = data['Product']['SellSatisfaction']  # 판매 만족도 정보
     used['SellGrade'] = data['Product']['SellGrade']  # 판매 등급
-    if data['ProductOption']['option'] == 'Y':
-        used['OptionList'] = data['ProductOption']['OptionList']['ValueList']['Value']  # 옵션 리스트
+    print(data.keys())
+    used['OptionList'] = []
+    status = ''
+    if ('ProductOption' in data.keys()) and data['ProductOption']['Option'] == 'Y':
+        used['OptionList'] = data['ProductOption']['OptionList']['Option']['ValueList']['Value']  # 옵션 리스트
+        status = data['ProductOption']['status']    # 상품 품절 여부
 
-    status = data['ProductOption']['status']    # 상품 품절 여부
     print('데이터길이' ,data['Product'].keys())
     print(data)
     # ['ProductCode', 'ProductName', 'ProductPrice', 'BasicImage', 'ImageL300', 'Point', 'Chip', 'Installment', 'ShipFee',
     #  'SellSatisfaction', 'SellGrade']
     # http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key='open api key'&apiCode=ProductInfo&productCode='상품번호'&option=PdOption
-    return data, status
+    return used, status
 
 def search(request):
     return redirect('product:list',"수분크림")

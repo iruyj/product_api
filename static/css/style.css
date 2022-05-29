@@ -260,16 +260,14 @@ body{
     flex-direction: column;
     align-items: center;
     align-content: center;
-    width: 100vw;
+    width: 95vw;
 }
 .detail_container .detail{
     display: flex;
     margin-top: 5%;
-    margin-right: 20%;
 }
 .detail_container .detail img{
-    width: 350px;
-    height: 400px;
+    height: 430px;
     margin-right: 30px;
 }
 .detail_hr{
@@ -280,15 +278,17 @@ body{
     margin-right: 20%;
 }
 
-.infos p{
-    background-color: #5a5a5a;
-    text-align: left;
+.info p{
+    color: #5a5a5a;
+    margin-top: 0;
+    font-size: 12px;
 }
 
 .detail_container .info h2{
     margin-top: 7px;
     margin-bottom: 0;
     font-size: 23px;
+    width: 25vw;
 }
 .detail_container .info .productCode{
     font-size: 12px;
@@ -314,9 +314,9 @@ body{
 }
 
 .detail_container .info .option_choose{
-    padding: 7px;
-    width: 250px;
-    margin-top: 20px;
+    padding: 10px;
+    width: 330px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 .detail_container .info button{
@@ -329,6 +329,14 @@ body{
     cursor: pointer;
 }
 
+.detail_list{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    visibility: hidden;
+}
 .infos{
     width: 60vw;
 }
