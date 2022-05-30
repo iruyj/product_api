@@ -54,7 +54,8 @@ body{
 .search_input {
     margin-left: 18px;
     width: 25vw;
-    height: 4vh;
+    height: 100%;
+    padding: 5px;
     font-size: 1em;
     border: none;
 }

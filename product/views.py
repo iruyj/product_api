@@ -39,7 +39,10 @@ def filtering(request, type):   # 0:이름순, 1:인기순, 2:낮은가격순, 3
     global datalist,chklist
     # 체크표시를 해줄 클래스 지정
     getChecklist(type)
-    return render(request,'product/list.html',context={'datas': datalist, 'chkclass':chklist })
+    page = request.GET.get('page', '1')
+    paginator = Paginator(datalist, '9')
+    page_obj = paginator.page(page)
+    return render(request,'product/list.html',context={'datas': page_obj, 'chkclass':chklist })
 
 # 필터링 기준에 따른 정렬&스타일 가져오기
 def getChecklist(type):
