@@ -60,7 +60,7 @@ def getChecklist(type):
         checklist['priceup'] = 'check'
         datalist.sort(key=lambda x: int(x['ProductPrice'][:-4]+x['ProductPrice'][-3:]), reverse=True)
     global chklist
-    chklist = chklist
+    chklist = checklist
 
 # 개별 항목 가져오기
 def getProduct(productCode):
